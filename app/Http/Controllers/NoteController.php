@@ -30,7 +30,32 @@ class NoteController extends Controller
         $note->name = request('name');
         $note->description = request('description');
         $note->save();
-        
+
+        return redirect(route('notes'));
+    }
+
+    public function edit(Note $note)
+    {
+        return view('note.edit', compact('note'));
+    }
+
+    public function update(Note $note)
+    {
+        request()->validate([
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+
+        $note->name = request('name');
+        $note->description = request('description');
+        $note->save();
+
+        return redirect(route('notes'));
+    }
+
+    public function delete(Note $note)
+    {
+        $note->delete();
         return redirect(route('notes'));
     }
 }

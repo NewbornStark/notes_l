@@ -8,5 +8,6 @@
 </head>
 <body>
     @yield('content')
+    @yield('pageScripts')
 </body>
 </html>
